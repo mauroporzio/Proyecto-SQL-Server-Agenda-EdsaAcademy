@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SQL Server Scripts Agenda EdsaAcademy">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="localhost\SQLEXPRESS:DESKTOP-BJR450V\MAUPAU">
+          <Created>2021-06-02T18:57:02.1773989-03:00</Created>
+          <Type>SQL</Type>
+          <Server>localhost\SQLEXPRESS</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="SQLQuery_DataBase.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery_DataBase.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery_Functions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery_Functions.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery_Procedures.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery_Procedures.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery_Tables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery_Tables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery_Tests.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery_Tests.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery_Triggers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery_Triggers.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
