@@ -162,6 +162,53 @@ AS
 			SET FechaModifReg = GETDATE()
 			WHERE([dbo].[AgendaContactos].Id = @Id);
 
+		INSERT INTO [dbo].[AgendaContactos_Historica] -- OCUPA LA FUNCION QUE DEL TRIGGER, PORQUE LOS REPETIDOS UPDATE CARGAN MAL LA HISTORICA.
+		(
+			IdContacto,
+			ApellidoYNombre,
+			Genero,
+			Pais,
+			Localidad,
+			ContactoInterno,
+			Organizacion,
+			Area,
+			FechaIngreso,
+			Activo,
+			Direccion,
+			TelefonoFijoInterno,
+			TelefonoCelular,
+			Email,
+			CuentaSkype,
+
+			ContactoAltaReg,
+			FechaAltaReg,
+			ContactoModifReg,
+			FechaModifReg
+		)
+		SELECT
+			
+			Id,
+			ApellidoYNombre,
+			Genero,
+			Pais,
+			Localidad,
+			ContactoInterno,
+			Organizacion,
+			Area,
+			FechaIngreso,
+			Activo,
+			Direccion,
+			TelefonoFijoInterno,
+			TelefonoCelular,
+			Email,
+			CuentaSkype,
+
+			ContactoAltaReg,
+			FechaAltaReg,
+			ContactoModifReg,
+			FechaModifReg
+		FROM [dbo].[AgendaContactos]
+		WHERE ([dbo].[AgendaContactos].Id = @Id)
 	END
 
 --////////////////////////////////

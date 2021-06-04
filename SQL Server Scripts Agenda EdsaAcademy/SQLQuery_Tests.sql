@@ -1,3 +1,15 @@
+
+--//////////////////HACER ANTES DE TESTEAR/////////////////////////
+
+--borrar tablas completas
+
+TRUNCATE TABLE [dbo].[AgendaContactos];
+TRUNCATE TABLE [dbo].[AgendaContactos_Historica];
+
+--////////////////////////////////////////////////////////////////
+
+
+
 --TESTEO InsertarContacto DE LA TABLA AgendaContacto, con trigger a AgendaContactoHistorica
 DECLARE @idContacto INT
 DECLARE	@ApellidoYNombre VARCHAR (50) ='Mauro Porzio'
@@ -72,9 +84,9 @@ EXEC InsertarContacto
 SELECT * FROM [dbo].[AgendaContactos]
 SELECT * FROM [dbo].[AgendaContactos_Historica] --SE CARGA POR TRIGGER
 
--- PRUEBA Procedure EditarContacto CON TRIGGER
+-- PRUEBA Procedure EditarContacto
 
-DECLARE @IdContactoAEditar INT = 15 -- ASIGNAR EL ID QUE QUIERA PARA PROBAR EDITAR. (MIRAR LOS SELECT PARA INGRESAR NUMERO)
+DECLARE @IdContactoAEditar INT = 2 -- ASIGNAR EL ID QUE QUIERA PARA PROBAR EDITAR. (MIRAR LOS SELECT PARA INGRESAR NUMERO)
 DECLARE @PaisNuevo VARCHAR (50) = 'Chile'
 DECLARE @ContactoModifReg VARCHAR (50)= 'FuncionDeEditarContactoEnC#'
 
@@ -83,30 +95,16 @@ EXEC EditarContacto @IdContactoAEditar, NULL, NULL, @PaisNuevo ,NULL, NULL, NULL
 --MOSTRAR LAS DOS TABLAS COMPLETAS DESPUES DEL UPDATE
 
 SELECT * FROM [dbo].[AgendaContactos]
-SELECT * FROM [dbo].[AgendaContactos_Historica] --SE CARGA POR TRIGGER
+SELECT * FROM [dbo].[AgendaContactos_Historica] --SE CARGA POR LA FUNCION DEL UPDATE QUE FUNCIONA SIMILAR A UN TRIGGER.
 
 --PRUEBA FUNCTION ConsultaContactos
 
-SELECT * FROM ConsultaContactos (NULL,  NULL, 'Mar del Plata',NULL, NULL, NULL, NULL)
+SELECT * FROM ConsultaContactos ('Mauro Porzio',  'Chile', NULL,NULL, NULL, NULL, NULL)
 
 --PRUEBA PROCEDURE BorarContacto
 
-DECLARE @IDContactoABorrar INT = 11 -- ASIGNAR EL ID QUE QUIERA PARA PROBAR BORRAR. (MIRAR LOS SELECT PARA INGRESAR NUMERO)
+DECLARE @IDContactoABorrar INT = 2 -- ASIGNAR EL ID QUE QUIERA PARA PROBAR BORRAR. (MIRAR LOS SELECT PARA INGRESAR NUMERO)
 
 EXEC BorrarContacto @IDContactoABorrar
 
 SELECT * FROM [dbo].[AgendaContactos]
-
-
-
-
-
-
-
-
---//////////////////NO ES PARTE DEL TESTEO!/////////////////////////
-
---borrar tablas completas
-
-DELETE FROM [dbo].[AgendaContactos];
-DELETE FROM [dbo].[AgendaContactos_Historica];

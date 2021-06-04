@@ -1,6 +1,6 @@
 --AUN FALTA MEJORAR EL TRIGGER PORQUE SE EJECUTA EN TODAS LAS OPERACIONES DE LA MODIFICAICON DEL CONTACTO Y ESTO NO ES CORRECTO, SE VA CAMBIAR ESO.
 
-CREATE TRIGGER [dbo].[AgendaContactos_Trigger_AgendaContactosHistorica_Insert] ON [dbo].[AgendaContactos] AFTER INSERT, UPDATE
+CREATE TRIGGER [dbo].[AgendaContactos_Trigger_AgendaContactosHistorica_Insert] ON [dbo].[AgendaContactos] AFTER INSERT
 AS
 	BEGIN
 		INSERT INTO [dbo].[AgendaContactos_Historica]
@@ -22,9 +22,7 @@ AS
 			CuentaSkype,
 
 			ContactoAltaReg,
-			FechaAltaReg,
-			ContactoModifReg,
-			FechaModifReg
+			FechaAltaReg
 		)
 		SELECT
 			Id,
@@ -44,9 +42,7 @@ AS
 			CuentaSkype,
 
 			ContactoAltaReg,
-			FechaAltaReg,
-			ContactoModifReg,
-			GETDATE()
+			FechaAltaReg
 		FROM INSERTED
 	END
 
@@ -60,5 +56,5 @@ AS
 
 -- DROP TRIGGER 
 
-DROP TRIGGER IF EXISTS [dbo].[AgendaContactos_Trigger_AgendaContactosHistorica_Insert_Update]
+DROP TRIGGER IF EXISTS [dbo].[AgendaContactos_Trigger_AgendaContactosHistorica_Insert]
 
