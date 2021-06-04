@@ -26,8 +26,7 @@ CREATE PROCEDURE InsertarContacto
 	@Email VARCHAR (30),
 	@CuentaSkype VARCHAR (20) = NULL,
 
-	@ContactoAltaReg VARCHAR(50),
-    @ContactoModifReg VARCHAR(50) = NULL
+	@ContactoAltaReg VARCHAR(50)
 	
 
 AS
@@ -41,7 +40,6 @@ AS
 			ContactoInterno,
 			Organizacion,
 			Area,
-			FechaIngreso,
 			Activo,
 			Direccion,
 			TelefonoFijoInterno,
@@ -50,8 +48,7 @@ AS
 			CuentaSkype,
 
 			ContactoAltaReg,
-			FechaAltaReg,
-			ContactoModifReg
+			FechaAltaReg
 		)
 		VALUES
 		(	
@@ -62,7 +59,6 @@ AS
 			@ContactoInterno,
 			@Organizacion,
 			@Area,
-			GETDATE(),
 			@Activo,
 			@Direccion,
 			@TelefonoFijoInterno,
@@ -71,8 +67,7 @@ AS
 			@CuentaSkype,
 
 			@ContactoAltaReg,
-			GETDATE(),
-			@ContactoModifReg
+			GETDATE()
 		)
 		SET @idContacto = SCOPE_IDENTITY()
 	END
@@ -172,7 +167,6 @@ AS
 			ContactoInterno,
 			Organizacion,
 			Area,
-			FechaIngreso,
 			Activo,
 			Direccion,
 			TelefonoFijoInterno,
@@ -195,7 +189,6 @@ AS
 			ContactoInterno,
 			Organizacion,
 			Area,
-			FechaIngreso,
 			Activo,
 			Direccion,
 			TelefonoFijoInterno,

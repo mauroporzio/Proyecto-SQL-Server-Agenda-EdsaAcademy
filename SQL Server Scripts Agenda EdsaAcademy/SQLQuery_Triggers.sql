@@ -13,7 +13,6 @@ AS
 			ContactoInterno,
 			Organizacion,
 			Area,
-			FechaIngreso,
 			Activo,
 			Direccion,
 			TelefonoFijoInterno,
@@ -33,7 +32,6 @@ AS
 			ContactoInterno,
 			Organizacion,
 			Area,
-			FechaIngreso,
 			Activo,
 			Direccion,
 			TelefonoFijoInterno,
@@ -47,12 +45,6 @@ AS
 	END
 
 --//////////////////////////
-
---TEST TRIGGERS
-
-	SELECT * FROM AgendaContactos
-
-	SELECT * FROM AgendaContactos_Historica
 
 -- DROP TRIGGER 
 

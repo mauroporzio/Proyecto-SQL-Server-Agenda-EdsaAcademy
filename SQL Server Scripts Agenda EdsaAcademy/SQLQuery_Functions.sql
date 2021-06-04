@@ -6,7 +6,9 @@ CREATE FUNCTION ConsultaContactos
 	@ContactoInterno VARCHAR (2)= NULL,				-- LLEGA POR PARAMETRO LOS VALORES DE LOS FILTROS QUE DESEO UTILIZAR.
 	@Organizacion VARCHAR (20)= NULL,				-- SI RECIBE TODOS EN NULL, DEVUELVE LA AGENDA COMPLETA.
 	@Area VARCHAR (20)= NULL,
-	@Activo VARCHAR (2)= NULL
+	@Activo VARCHAR (2)= NULL,
+	@fechaDeIngresoDesde DATETIME = NULL,
+	@fechaDeIngresoHasta DATETIME = NULL
 )
 RETURNS @TablaResultadosConsulta TABLE
 		(
@@ -18,7 +20,7 @@ RETURNS @TablaResultadosConsulta TABLE
 			ContactoInterno VARCHAR (2) NOT NULL,
 			Organizacion VARCHAR (20) NULL,
 			Area VARCHAR (20) NULL,
-			FechaIngreso DATETIME NOT NULL,
+			FechaAltaReg DATETIME NOT NULL,
 			Activo VARCHAR (2) NOT NULL,
 			Direccion VARCHAR(20) NULL,
 			TelefonoFijoInterno VARCHAR(20) NULL,
@@ -38,7 +40,7 @@ RETURNS @TablaResultadosConsulta TABLE
 							[dbo].[AgendaContactos].ContactoInterno,
 							[dbo].[AgendaContactos].Organizacion,
 							[dbo].[AgendaContactos].Area,
-							[dbo].[AgendaContactos].FechaIngreso,
+							[dbo].[AgendaContactos].FechaAltaReg,
 							[dbo].[AgendaContactos].Activo,
 							[dbo].[AgendaContactos].Direccion,
 							[dbo].[AgendaContactos].TelefonoFijoInterno,
@@ -54,7 +56,9 @@ RETURNS @TablaResultadosConsulta TABLE
 							[dbo].[AgendaContactos].ContactoInterno = @ContactoInterno OR
 							[dbo].[AgendaContactos].Organizacion = @Organizacion OR
 							[dbo].[AgendaContactos].Area = @Area OR
-							[dbo].[AgendaContactos].Activo = @Activo
+							[dbo].[AgendaContactos].Activo = @Activo OR
+							CONVERT(DATE,[dbo].[AgendaContactos].FechaAltaReg) >= CONVERT(DATE, @fechaDeIngresoDesde) AND @fechaDeIngresoDesde IS NOT NULL OR
+							CONVERT(DATE,[dbo].[AgendaContactos].FechaAltaReg) <= CONVERT(DATE, @fechaDeIngresoHasta) AND @fechaDeIngresoHasta IS NOT NULL
 						)
 
 					INSERT INTO @TablaResultadosConsulta --SI ME LLEGO TODOS LOS FILTROS EN NULL, QUIERO DEVOLVER TODA LA AGENDA.
@@ -67,7 +71,7 @@ RETURNS @TablaResultadosConsulta TABLE
 							[dbo].[AgendaContactos].ContactoInterno,
 							[dbo].[AgendaContactos].Organizacion,
 							[dbo].[AgendaContactos].Area,
-							[dbo].[AgendaContactos].FechaIngreso,
+							[dbo].[AgendaContactos].FechaAltaReg,
 							[dbo].[AgendaContactos].Activo,
 							[dbo].[AgendaContactos].Direccion,
 							[dbo].[AgendaContactos].TelefonoFijoInterno,
@@ -83,7 +87,9 @@ RETURNS @TablaResultadosConsulta TABLE
 							@ContactoInterno IS NULL AND 
 							@Organizacion IS NULL AND 
 							@Area IS NULL AND 
-							@Activo IS NULL
+							@Activo IS NULL AND
+							@fechaDeIngresoDesde IS NULL AND
+							@fechaDeIngresoHasta IS NULL
 						)
 
 					DELETE @TablaResultadosConsulta													 
@@ -106,12 +112,16 @@ RETURNS @TablaResultadosConsulta TABLE
 
 					DELETE @TablaResultadosConsulta
 						WHERE (Activo != @Activo AND @Activo IS NOT NULL)
+					
+					DELETE @TablaResultadosConsulta
+						WHERE (CONVERT(DATE, FechaAltaReg) < CONVERT(DATE, @fechaDeIngresoDesde) AND @fechaDeIngresoDesde IS NOT NULL)
+
+					DELETE @TablaResultadosConsulta
+						WHERE (CONVERT(DATE, FechaAltaReg) > CONVERT(DATE, @fechaDeIngresoHasta) AND @fechaDeIngresoHasta IS NOT NULL)
 
 					RETURN  -- RETORNO LA TABLA CON LOS RESULTADOS DEL FILTRADO.
 			END
 		GO
-
-
 
 --DROP FUNCTIONS
 
