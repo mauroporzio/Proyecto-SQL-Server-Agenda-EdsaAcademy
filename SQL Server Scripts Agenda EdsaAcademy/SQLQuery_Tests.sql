@@ -147,13 +147,17 @@ EXEC EditarContacto @IdContactoAEditar, NULL, NULL, @PaisNuevo ,NULL, NULL, NULL
 SELECT * FROM [dbo].[AgendaContactos]
 SELECT * FROM [dbo].[AgendaContactos_Historica] --SE CARGA POR LA FUNCION DEL UPDATE QUE FUNCIONA SIMILAR A UN TRIGGER.
 
---PRUEBA FUNCTION ConsultaContactos sin filtros, debe retornar toda la tabla
+--PRUEBA Procedure ConsultaContactos sin filtros, debe retornar toda la tabla
 
-SELECT * FROM ConsultaContactos (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+EXEC ConsultarContacto NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 
---PRUEBA FUNCTION ConsultaContactos con filtros de nombre y por rango entre dos fechas
 
-SELECT * FROM ConsultaContactos ('Mauro Porzio', NULL, NULL, NULL, NULL, NULL, NULL, CONVERT(DATE, '01/01/2001'), CONVERT(DATE, '01/01/2004'))
+--PRUEBA Procedure ConsultarContacto con filtros de nombre y por rango entre dos fechas
+
+DECLARE @fechaDesde DATE = CONVERT(DATE, '01/01/2001')
+DECLARE @fechaHasta DATE = CONVERT(DATE, '01/01/2004')
+
+EXEC ConsultarContacto 'Mauro Porzio', NULL, NULL, NULL, NULL, NULL, NULL, @fechaDesde, @fechaHasta
 
 --PRUEBA PROCEDURE BorarContacto
 

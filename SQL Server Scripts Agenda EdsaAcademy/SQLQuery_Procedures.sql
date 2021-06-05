@@ -206,6 +206,25 @@ AS
 
 --////////////////////////////////
 
+CREATE PROCEDURE ConsultarContacto
+
+	@ApellidoYNombre VARCHAR (50)= NULL,
+	@Pais VARCHAR (20)= NULL,
+	@Localidad VARCHAR (20) = NULL,
+	@ContactoInterno VARCHAR (2)= NULL,	
+	@Organizacion VARCHAR (20)= NULL,
+	@Area VARCHAR (20)= NULL,
+	@Activo VARCHAR (2)= NULL,
+	@fechaDeIngresoDesde DATETIME = NULL,
+	@fechaDeIngresoHasta DATETIME = NULL
+AS
+	BEGIN
+		SELECT * FROM [dbo].[ConsultaContactos] (@ApellidoYNombre, @Pais, @Localidad, @ContactoInterno, @Organizacion, @Area, @Activo, @fechaDeIngresoDesde, @fechaDeIngresoHasta)
+	END
+
+--////////////////////////////////
+
 DROP PROCEDURE IF EXISTS BorrarContacto
 DROP PROCEDURE IF EXISTS InsertarContacto
 DROP PROCEDURE IF EXISTS EditarContacto
+DROP PROCEDURE IF EXISTS ConsultarContacto
