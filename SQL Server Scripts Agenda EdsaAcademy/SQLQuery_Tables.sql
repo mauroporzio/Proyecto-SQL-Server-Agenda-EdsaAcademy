@@ -83,7 +83,7 @@ CREATE TABLE Area -- TABLA QUE CONTIENE LOS VALORES DE LAS AREAS QUE ESTARN DISP
 	NombreArea VARCHAR (20) NOT NULL
 )
 
-INSERT INTO [dbo].[Area] (NombreArea) VALUES ('Marketing'), ('Finanzas'), ('Finanzas'), ('RRHH'), ('Operaciones')
+INSERT INTO [dbo].[Area] (NombreArea) VALUES ('Marketing'), ('Finanzas'), ('RRHH'), ('Operaciones')
 
 SELECT * FROM AREA
 
