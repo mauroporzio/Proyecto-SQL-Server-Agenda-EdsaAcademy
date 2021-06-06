@@ -18,9 +18,9 @@ DECLARE	@Genero VARCHAR (10) = 'Masculino'
 DECLARE	@Pais VARCHAR (20) = 'Argentina'
 DECLARE	@Localidad VARCHAR (20) = 	'Mar del Plata'
 DECLARE	@ContactoInterno VARCHAR (2) = 'Si'
-DECLARE	@Organizacion VARCHAR (20) = 'RRHH'
-DECLARE	@Area VARCHAR (20) = 'SI'
-DECLARE	@Activo VARCHAR (2) = 'Calle 123'
+DECLARE	@Organizacion VARCHAR (20) = NULL
+DECLARE	@Area VARCHAR (20) = 'Operaciones'
+DECLARE	@Activo VARCHAR (2) = 'Si'
 DECLARE	@Direccion VARCHAR(20) = 'Calle 123'
 DECLARE	@TelefonoFijoInterno VARCHAR(20) = '121345234'
 DECLARE	@TelefonoCelular VARCHAR (20) = '22334567'
@@ -47,19 +47,19 @@ EXEC InsertarContacto
 	@ContactoAltaReg
 
 DECLARE @idContacto2 INT
-DECLARE	@ApellidoYNombre2 VARCHAR (50) ='Mauro Porzio'
-DECLARE	@Genero2 VARCHAR (10) = 'Masculino'
+DECLARE	@ApellidoYNombre2 VARCHAR (50) ='Maria Benitez'
+DECLARE	@Genero2 VARCHAR (10) = 'Femenino'
 DECLARE	@Pais2 VARCHAR (20) = 'Argentina'
 DECLARE	@Localidad2 VARCHAR (20) = 	'Buenos Aires' --PARAM DISTINTO PARA PROBAR LA CONSULTA POR FILTRO
-DECLARE	@ContactoInterno2 VARCHAR (2) = 'Si'
-DECLARE	@Organizacion2 VARCHAR (20) = 'RRHH'
-DECLARE	@Area2 VARCHAR (20) = 'SI'
-DECLARE	@Activo2 VARCHAR (2) = 'Calle 123'
-DECLARE	@Direccion2 VARCHAR(20) = 'Calle 123'
-DECLARE	@TelefonoFijoInterno2 VARCHAR(20) = '1233453645'
+DECLARE	@ContactoInterno2 VARCHAR (2) = 'No'
+DECLARE	@Organizacion2 VARCHAR (20) = 'Empresa s.a'
+DECLARE	@Area2 VARCHAR (20) = NULL
+DECLARE	@Activo2 VARCHAR (2) = 'No'
+DECLARE	@Direccion2 VARCHAR(20) = 'Calle 3645'
+DECLARE	@TelefonoFijoInterno2 VARCHAR(20) = NULL
 DECLARE	@TelefonoCelular2 VARCHAR (20) =  '22334567'
-DECLARE	@Email2 VARCHAR (30) ='mauro@gmail.com'
-DECLARE	@CuentaSkype2 VARCHAR (20) = 'mauroporzioSkype'
+DECLARE	@Email2 VARCHAR (30) ='mariaBenitez@gmail.com'
+DECLARE	@CuentaSkype2 VARCHAR (20) = 'mariaBenitezSkype'
 
 DECLARE	@ContactoAltaReg2 VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -81,19 +81,19 @@ EXEC InsertarContacto
 	@ContactoAltaReg2
 
 DECLARE @idContacto3 INT
-DECLARE	@ApellidoYNombre3 VARCHAR (50) ='Mauro Porzio'
+DECLARE	@ApellidoYNombre3 VARCHAR (50) ='Juan Perez'
 DECLARE	@Genero3 VARCHAR (10) = 'Masculino'
-DECLARE	@Pais3 VARCHAR (20) = 'Argentina'
-DECLARE	@Localidad3 VARCHAR (20) = 	'Mar del Plata'
+DECLARE	@Pais3 VARCHAR (20) = 'Chile'
+DECLARE	@Localidad3 VARCHAR (20) = 	'Santiago de Chile'
 DECLARE	@ContactoInterno3 VARCHAR (2) = 'Si'
-DECLARE	@Organizacion3 VARCHAR (20) = 'RRHH'
-DECLARE	@Area3 VARCHAR (20) = 'SI'
-DECLARE	@Activo3 VARCHAR (2) = 'Calle 123'
-DECLARE	@Direccion3 VARCHAR(20) = 'Calle 123'
+DECLARE	@Organizacion3 VARCHAR (20) = NULL
+DECLARE	@Area3 VARCHAR (20) = 'RRHH'
+DECLARE	@Activo3 VARCHAR (2) = 'Si'
+DECLARE	@Direccion3 VARCHAR(20) = 'Calle 6543'
 DECLARE	@TelefonoFijoInterno3 VARCHAR(20) = '121345234'
-DECLARE	@TelefonoCelular3 VARCHAR (20) = '22334567'
-DECLARE	@Email3 VARCHAR (30) = 'mauro@gmail.com'
-DECLARE	@CuentaSkype3 VARCHAR (20) = 'cuentaSkype'
+DECLARE	@TelefonoCelular3 VARCHAR (20) = NULL
+DECLARE	@Email3 VARCHAR (30) = 'juanPerez@gmail.com'
+DECLARE	@CuentaSkype3 VARCHAR (20) = 'juanPerezSkype'
 
 DECLARE	@ContactoAltaReg3 VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -137,7 +137,7 @@ SELECT * FROM [dbo].[AgendaContactos_Historica] --SE CARGA POR TRIGGER
 -- PRUEBA Procedure EditarContacto
 
 DECLARE @IdContactoAEditar INT = 2 -- ASIGNAR EL ID QUE QUIERA PARA PROBAR EDITAR. (MIRAR LOS SELECT PARA INGRESAR NUMERO)
-DECLARE @PaisNuevo VARCHAR (50) = 'Chile'
+DECLARE @PaisNuevo VARCHAR (50) = 'Brasil'
 DECLARE @ContactoModifReg VARCHAR (50)= 'FuncionDeEditarContactoEnC#'
 
 EXEC EditarContacto @IdContactoAEditar, NULL, NULL, @PaisNuevo ,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, @ContactoModifReg
@@ -166,3 +166,9 @@ DECLARE @IDContactoABorrar INT = 2 -- ASIGNAR EL ID QUE QUIERA PARA PROBAR BORRA
 EXEC BorrarContacto @IDContactoABorrar
 
 SELECT * FROM [dbo].[AgendaContactos]
+
+-- PRUEBA procedure DevolverContactoPorId
+
+DECLARE @IdBuscar INT = 1
+
+EXEC DevolverContactoPorId @IdBuscar

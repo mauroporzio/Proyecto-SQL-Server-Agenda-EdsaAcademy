@@ -224,7 +224,17 @@ AS
 
 --////////////////////////////////
 
+CREATE PROCEDURE DevolverContactoPorId
+	@Id INT
+AS
+	BEGIN
+		SELECT * FROM [dbo].[AgendaContactos] WHERE AgendaContactos.Id = @Id
+	END
+
+--////////////////////////////////
+
 DROP PROCEDURE IF EXISTS BorrarContacto
 DROP PROCEDURE IF EXISTS InsertarContacto
 DROP PROCEDURE IF EXISTS EditarContacto
 DROP PROCEDURE IF EXISTS ConsultarContacto
+DROP PROCEDURE IF EXISTS DevolverContactoPorId

@@ -12,7 +12,7 @@ CREATE FUNCTION ConsultaContactos
 )
 RETURNS @TablaResultadosConsulta TABLE
 		(
-			idAgendaContacto INT NOT NULL,
+			Id INT NOT NULL,
 			ApellidoYNombre VARCHAR (50)NOT NULL,
 			Genero VARCHAR (10) NOT NULL,
 			Pais VARCHAR (20) NOT NULL,
@@ -32,7 +32,7 @@ RETURNS @TablaResultadosConsulta TABLE
 			BEGIN
 				INSERT INTO @TablaResultadosConsulta --CARGO LOS PRIMEROS VALORES CON EL PRIMER FILTRO QUE TENGA PARA LUEGO FILTRAR EL RESTO DE COSAS.
 					SELECT
-							[dbo].[AgendaContactos].Id AS idAgendaContacto,
+							[dbo].[AgendaContactos].Id,
 							[dbo].[AgendaContactos].ApellidoYNombre,
 							[dbo].[AgendaContactos].Genero,
 							[dbo].[AgendaContactos].Pais,
@@ -63,7 +63,7 @@ RETURNS @TablaResultadosConsulta TABLE
 
 					INSERT INTO @TablaResultadosConsulta --SI ME LLEGO TODOS LOS FILTROS EN NULL, QUIERO DEVOLVER TODA LA AGENDA.
 					SELECT
-							[dbo].[AgendaContactos].Id AS idAgendaContacto,
+							[dbo].[AgendaContactos].Id,
 							[dbo].[AgendaContactos].ApellidoYNombre,
 							[dbo].[AgendaContactos].Genero,
 							[dbo].[AgendaContactos].Pais,
@@ -99,7 +99,7 @@ RETURNS @TablaResultadosConsulta TABLE
 						WHERE (Pais != @Pais AND @Pais IS NOT NULL)
 
 					DELETE @TablaResultadosConsulta
-						WHERE (Localidad != Localidad AND @Localidad IS NOT NULL)
+						WHERE (Localidad != @Localidad AND @Localidad IS NOT NULL)
 																										-- BORRO LO QUE NO CORRESPONDE AL RESTO DE MIS FILTROS.
 					DELETE @TablaResultadosConsulta
 						WHERE (ContactoInterno != @ContactoInterno AND @ContactoInterno IS NOT NULL)
@@ -108,7 +108,7 @@ RETURNS @TablaResultadosConsulta TABLE
 						WHERE (Organizacion != @Organizacion AND @Organizacion IS NOT NULL)
 
 					DELETE @TablaResultadosConsulta
-						WHERE (Area != @Activo AND @Area IS NOT NULL)
+						WHERE (Area != @Area AND @Area IS NOT NULL)
 
 					DELETE @TablaResultadosConsulta
 						WHERE (Activo != @Activo AND @Activo IS NOT NULL)
@@ -122,6 +122,8 @@ RETURNS @TablaResultadosConsulta TABLE
 					RETURN  -- RETORNO LA TABLA CON LOS RESULTADOS DEL FILTRADO.
 			END
 		GO
+
+--/////////////////////////////////
 
 --DROP FUNCTIONS
 
