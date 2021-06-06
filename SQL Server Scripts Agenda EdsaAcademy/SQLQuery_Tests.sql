@@ -25,7 +25,7 @@ DECLARE	@Direccion VARCHAR(20) = 'Calle 123'
 DECLARE	@TelefonoFijoInterno VARCHAR(20) = '121345234'
 DECLARE	@TelefonoCelular VARCHAR (20) = '22334567'
 DECLARE	@Email VARCHAR (30) = 'mauro@gmail.com'
-DECLARE	@CuentaSkype VARCHAR (20) = 'cuentaSkype'
+DECLARE	@CuentaSkype VARCHAR (20) = 'porzioMauro'
 
 DECLARE	@ContactoAltaReg VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -59,7 +59,7 @@ DECLARE	@Direccion2 VARCHAR(20) = 'Calle 3645'
 DECLARE	@TelefonoFijoInterno2 VARCHAR(20) = NULL
 DECLARE	@TelefonoCelular2 VARCHAR (20) =  '22334567'
 DECLARE	@Email2 VARCHAR (30) ='mariaBenitez@gmail.com'
-DECLARE	@CuentaSkype2 VARCHAR (20) = 'mariaBenitezSkype'
+DECLARE	@CuentaSkype2 VARCHAR (20) = 'mariaBenitez'
 
 DECLARE	@ContactoAltaReg2 VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -93,7 +93,7 @@ DECLARE	@Direccion3 VARCHAR(20) = 'Calle 6543'
 DECLARE	@TelefonoFijoInterno3 VARCHAR(20) = '121345234'
 DECLARE	@TelefonoCelular3 VARCHAR (20) = NULL
 DECLARE	@Email3 VARCHAR (30) = 'juanPerez@gmail.com'
-DECLARE	@CuentaSkype3 VARCHAR (20) = 'juanPerezSkype'
+DECLARE	@CuentaSkype3 VARCHAR (20) = 'juanPerez'
 
 DECLARE	@ContactoAltaReg3 VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -114,6 +114,82 @@ EXEC InsertarContacto
 	@CuentaSkype3,
 	@ContactoAltaReg3
 
+DECLARE @idContacto4 INT
+
+EXEC InsertarContacto
+	@idContacto4 OUTPUT,
+	'Luna Torres',
+	'Femenino',
+	'Brasil',
+	'Rio de Janeiro',
+	'No',
+	'Empresa SRL',
+	NULL,
+	'No',
+	'Calle 567',
+	NULL,
+	'145786454',
+	'lunaTorres@hotmail.com',
+	'lunaTorres1',
+	'insertarContacto'
+
+DECLARE @idContacto5 INT
+
+EXEC InsertarContacto
+	@idContacto5 OUTPUT,
+	'Agustin Ponce',
+	'Masculino',
+	'Colombia',
+	'Bogota',
+	'No',
+	'Empresa2 SRL',
+	NULL,
+	'No',
+	'Calle 778',
+	NULL,
+	'165734633',
+	'agustinPonce@hotmail.com',
+	'agustinPonce123',
+	'insertarContacto'
+
+DECLARE @idContacto6 INT
+
+EXEC InsertarContacto
+	@idContacto6 OUTPUT,
+	'Pablo Arias',
+	'Masculino',
+	'Argentina',
+	'Rosario',
+	'No',
+	'Empresa3 SRL',
+	NULL,
+	'No',
+	'Calle 7856',
+	NULL,
+	'134568784',
+	'pabloArias@outlook.com',
+	'pabloArias111',
+	'insertarContacto'
+
+DECLARE @idContacto7 INT
+
+EXEC InsertarContacto
+	@idContacto7 OUTPUT,
+	'Delfina Tassone',
+	'Femenino',
+	'Argentina',
+	'Buenos Aires',
+	'Si',
+	NULL,
+	'Finanzas',
+	'Si',
+	'Calle 6754',
+	'44567551',
+	'134568784',
+	'tassoneDelfina@outlook.com',
+	'delfinaTassone555',
+	'insertarContacto'
+
 -- UPDATE FECHA INGRESO PARA QUE SE PUEDAN PROBAR LOS FILTROS
 
 UPDATE [dbo].[AgendaContactos]
@@ -128,6 +204,10 @@ UPDATE [dbo].[AgendaContactos]
 UPDATE [dbo].[AgendaContactos]
 	SET FechaAltaReg = CONVERT(DATE, '11/07/2005')
 	WHERE (Id = 3);
+
+UPDATE [dbo].[AgendaContactos]
+	SET FechaAltaReg = CONVERT(DATE, '08/03/2019')
+	WHERE (Id = 4);
 
 --MOSTRAR LAS DOS TABLAS COMPLETAS DESPUES DE LOS INSERT
 
