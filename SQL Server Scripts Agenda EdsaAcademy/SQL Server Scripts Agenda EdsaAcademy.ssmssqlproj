@@ -25,12 +25,6 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery_DataBase.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery_Functions.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>SQLQuery_Functions.sql</FullPath>
-        </FileNode>
         <FileNode Name="SQLQuery_Procedures.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:localhost\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>localhost\SQLEXPRESS</AssociatedConnSrvName>

@@ -5,10 +5,10 @@ CREATE TABLE AgendaContactos
 	Genero VARCHAR (10) NOT NULL,
 	Pais VARCHAR (20) NOT NULL,
 	Localidad VARCHAR (20) NULL,
-	ContactoInterno VARCHAR (2) NOT NULL,
+	ContactoInterno BIT NOT NULL,
 	Organizacion VARCHAR (20) NULL,
 	Area VARCHAR (20) NULL,
-	Activo VARCHAR (2) NOT NULL,
+	Activo BIT NOT NULL,
 	Direccion VARCHAR(20) NULL,
 	TelefonoFijoInterno VARCHAR(20) NULL,
 	TelefonoCelular VARCHAR (20) NULL,
@@ -30,10 +30,10 @@ CREATE TABLE AgendaContactos_Historica
 	Genero VARCHAR (10) NOT NULL,
 	Pais VARCHAR (20) NOT NULL,
 	Localidad VARCHAR (20) NULL,
-	ContactoInterno VARCHAR (2) NOT NULL,
+	ContactoInterno BIT NOT NULL,
 	Organizacion VARCHAR (20) NULL,
 	Area VARCHAR (20) NULL,
-	Activo VARCHAR (2) NOT NULL,
+	Activo BIT NOT NULL,
 	Direccion VARCHAR(20) NULL,
 	TelefonoFijoInterno VARCHAR(20) NULL,
 	TelefonoCelular VARCHAR (20) NULL,
@@ -45,7 +45,6 @@ CREATE TABLE AgendaContactos_Historica
     ContactoModifReg VARCHAR(50) NULL,
     FechaModifReg DATETIME NULL
 )
-
 
 
 CREATE TABLE Pais -- TABLA QUE CONTIENE LOS VALORES DE LOS PAISES QUE ESTARN DISPONIBLES EN EL DROP DOWN DENTRO DEL UI

@@ -17,10 +17,10 @@ DECLARE	@ApellidoYNombre VARCHAR (50) ='Mauro Porzio'
 DECLARE	@Genero VARCHAR (10) = 'Masculino'
 DECLARE	@Pais VARCHAR (20) = 'Argentina'
 DECLARE	@Localidad VARCHAR (20) = 	'Mar del Plata'
-DECLARE	@ContactoInterno VARCHAR (2) = 'Si'
+DECLARE	@ContactoInterno BIT = 1
 DECLARE	@Organizacion VARCHAR (20) = NULL
 DECLARE	@Area VARCHAR (20) = 'Operaciones'
-DECLARE	@Activo VARCHAR (2) = 'Si'
+DECLARE	@Activo BIT = 1
 DECLARE	@Direccion VARCHAR(20) = 'Calle 123'
 DECLARE	@TelefonoFijoInterno VARCHAR(20) = '121345234'
 DECLARE	@TelefonoCelular VARCHAR (20) = '22334567'
@@ -51,10 +51,10 @@ DECLARE	@ApellidoYNombre2 VARCHAR (50) ='Maria Benitez'
 DECLARE	@Genero2 VARCHAR (10) = 'Femenino'
 DECLARE	@Pais2 VARCHAR (20) = 'Argentina'
 DECLARE	@Localidad2 VARCHAR (20) = 	'Buenos Aires' --PARAM DISTINTO PARA PROBAR LA CONSULTA POR FILTRO
-DECLARE	@ContactoInterno2 VARCHAR (2) = 'No'
+DECLARE	@ContactoInterno2 BIT = 0
 DECLARE	@Organizacion2 VARCHAR (20) = 'Empresa s.a'
 DECLARE	@Area2 VARCHAR (20) = NULL
-DECLARE	@Activo2 VARCHAR (2) = 'No'
+DECLARE	@Activo2 BIT = 0
 DECLARE	@Direccion2 VARCHAR(20) = 'Calle 3645'
 DECLARE	@TelefonoFijoInterno2 VARCHAR(20) = NULL
 DECLARE	@TelefonoCelular2 VARCHAR (20) =  '22334567'
@@ -85,10 +85,10 @@ DECLARE	@ApellidoYNombre3 VARCHAR (50) ='Juan Perez'
 DECLARE	@Genero3 VARCHAR (10) = 'Masculino'
 DECLARE	@Pais3 VARCHAR (20) = 'Chile'
 DECLARE	@Localidad3 VARCHAR (20) = 	'Santiago de Chile'
-DECLARE	@ContactoInterno3 VARCHAR (2) = 'Si'
+DECLARE	@ContactoInterno3 BIT = 1
 DECLARE	@Organizacion3 VARCHAR (20) = NULL
 DECLARE	@Area3 VARCHAR (20) = 'RRHH'
-DECLARE	@Activo3 VARCHAR (2) = 'Si'
+DECLARE	@Activo3 BIT = 1
 DECLARE	@Direccion3 VARCHAR(20) = 'Calle 6543'
 DECLARE	@TelefonoFijoInterno3 VARCHAR(20) = '121345234'
 DECLARE	@TelefonoCelular3 VARCHAR (20) = NULL
@@ -122,10 +122,10 @@ EXEC InsertarContacto
 	'Femenino',
 	'Brasil',
 	'Rio de Janeiro',
-	'No',
+	0,
 	'Empresa SRL',
 	NULL,
-	'No',
+	0,
 	'Calle 567',
 	NULL,
 	'145786454',
@@ -141,10 +141,10 @@ EXEC InsertarContacto
 	'Masculino',
 	'Colombia',
 	'Bogota',
-	'No',
+	0,
 	'Empresa2 SRL',
 	NULL,
-	'No',
+	0,
 	'Calle 778',
 	NULL,
 	'165734633',
@@ -160,10 +160,10 @@ EXEC InsertarContacto
 	'Masculino',
 	'Argentina',
 	'Rosario',
-	'No',
+	0,
 	'Empresa3 SRL',
 	NULL,
-	'No',
+	0,
 	'Calle 7856',
 	NULL,
 	'134568784',
@@ -179,10 +179,10 @@ EXEC InsertarContacto
 	'Femenino',
 	'Argentina',
 	'Buenos Aires',
-	'Si',
+	1,
 	NULL,
 	'Finanzas',
-	'Si',
+	1,
 	'Calle 6754',
 	'44567551',
 	'134568784',
@@ -195,8 +195,6 @@ EXEC InsertarContacto
 UPDATE [dbo].[AgendaContactos]
 	SET FechaAltaReg = CONVERT(DATE, '12/02/2000')
 	WHERE (Id = 1);
-													-- EL TRIGGER NO SE USA PORQUE NO ESTA APLICADO PARA UPDATE, SINO SOLO CON LA PROCEDURE DE EDITAR CONTACTO,
-													-- QUE ES LA UNICA MANERA DE EDITAR UN CONTACTO USADA EN EL PROYECYO, NUNCA SE HARA UN UPDATE DIRECTO.
 UPDATE [dbo].[AgendaContactos]
 	SET FechaAltaReg = CONVERT(DATE, '06/18/2002')
 	WHERE (Id = 2);
@@ -229,15 +227,14 @@ SELECT * FROM [dbo].[AgendaContactos_Historica] --SE CARGA POR LA FUNCION DEL UP
 
 --PRUEBA Procedure ConsultaContactos sin filtros, debe retornar toda la tabla
 
-EXEC ConsultarContacto NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
-
+EXEC ConsultarContacto 
 
 --PRUEBA Procedure ConsultarContacto con filtros de nombre y por rango entre dos fechas
 
 DECLARE @fechaDesde DATE = CONVERT(DATE, '01/01/2001')
 DECLARE @fechaHasta DATE = CONVERT(DATE, '01/01/2004')
 
-EXEC ConsultarContacto 'Mauro Porzio', NULL, NULL, NULL, NULL, NULL, NULL, @fechaDesde, @fechaHasta
+EXEC ConsultarContacto NULL, NULL, NULL, NULL, NULL, NULL, NULL, @fechaDesde, @fechaHasta
 
 --PRUEBA PROCEDURE BorarContacto
 
