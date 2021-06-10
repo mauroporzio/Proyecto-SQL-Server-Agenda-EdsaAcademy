@@ -75,17 +75,6 @@ INSERT INTO [dbo].[Pais] (NombrePais) VALUES
 
 SELECT * FROM Pais
 
-
-CREATE TABLE Area -- TABLA QUE CONTIENE LOS VALORES DE LAS AREAS QUE ESTARN DISPONIBLES EN EL DROP DOWN DENTRO DEL UI
-(
-	IdArea INT IDENTITY(1,1),
-	NombreArea VARCHAR (20) NOT NULL
-)
-
-INSERT INTO [dbo].[Area] (NombreArea) VALUES ('Marketing'), ('Finanzas'), ('RRHH'), ('Operaciones')
-
-SELECT * FROM AREA
-
 --Borrar Tablas
 
 DROP TABLE AgendaContactos
