@@ -14,6 +14,7 @@ CREATE TABLE AgendaContactos
 	TelefonoCelular VARCHAR (20) NULL,
 	Email VARCHAR (30) NOT NULL,
 	CuentaSkype VARCHAR (20) NULL,
+	Cuil VARCHAR (20) NOT NULL,
 
 	ContactoAltaReg VARCHAR(50) NOT NULL, --NOMBRE DE FUNCION QUE HIZO EL insert.
 	FechaAltaReg DATETIME NOT NULL,
@@ -39,6 +40,7 @@ CREATE TABLE AgendaContactos_Historica
 	TelefonoCelular VARCHAR (20) NULL,
 	Email VARCHAR (30) NOT NULL,
 	CuentaSkype VARCHAR (20) NULL,
+	Cuil VARCHAR (20) NOT NULL,
 
 	ContactoAltaReg VARCHAR(50) NOT NULL,
     FechaAltaReg DATETIME NOT NULL,
@@ -74,6 +76,8 @@ INSERT INTO [dbo].[Pais] (NombrePais) VALUES
 	('Japon')
 
 SELECT * FROM Pais
+SELECT * FROM AgendaContactos
+SELECT * FROM AgendaContactos_Historica
 
 --Borrar Tablas
 

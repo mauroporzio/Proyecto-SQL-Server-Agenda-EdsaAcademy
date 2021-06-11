@@ -26,6 +26,7 @@ DECLARE	@TelefonoFijoInterno VARCHAR(20) = '121345234'
 DECLARE	@TelefonoCelular VARCHAR (20) = '22334567'
 DECLARE	@Email VARCHAR (30) = 'mauro@gmail.com'
 DECLARE	@CuentaSkype VARCHAR (20) = 'porzioMauro'
+DECLARE @Cuil VARCHAR (20) = '20-12342354-7'
 
 DECLARE	@ContactoAltaReg VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -44,7 +45,9 @@ EXEC InsertarContacto
 	@TelefonoCelular,
 	@Email,
 	@CuentaSkype,
+	@Cuil,
 	@ContactoAltaReg
+
 
 DECLARE @idContacto2 INT
 DECLARE	@ApellidoYNombre2 VARCHAR (50) ='Maria Benitez'
@@ -60,6 +63,7 @@ DECLARE	@TelefonoFijoInterno2 VARCHAR(20) = NULL
 DECLARE	@TelefonoCelular2 VARCHAR (20) =  '22334567'
 DECLARE	@Email2 VARCHAR (30) ='mariaBenitez@gmail.com'
 DECLARE	@CuentaSkype2 VARCHAR (20) = 'mariaBenitez'
+DECLARE @Cuil2 VARCHAR (20) = '27-13245568-6'
 
 DECLARE	@ContactoAltaReg2 VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -78,6 +82,7 @@ EXEC InsertarContacto
 	@TelefonoCelular2,
 	@Email2,
 	@CuentaSkype2,
+	@Cuil2,
 	@ContactoAltaReg2
 
 DECLARE @idContacto3 INT
@@ -94,6 +99,7 @@ DECLARE	@TelefonoFijoInterno3 VARCHAR(20) = '121345234'
 DECLARE	@TelefonoCelular3 VARCHAR (20) = NULL
 DECLARE	@Email3 VARCHAR (30) = 'juanPerez@gmail.com'
 DECLARE	@CuentaSkype3 VARCHAR (20) = 'juanPerez'
+DECLARE @Cuil3 VARCHAR (20) = '20-13454356-5'
 
 DECLARE	@ContactoAltaReg3 VARCHAR(50) = 'FuncionInsertarContactoDeC#'
 
@@ -112,6 +118,7 @@ EXEC InsertarContacto
 	@TelefonoCelular3,
 	@Email3,
 	@CuentaSkype3,
+	@Cuil3,
 	@ContactoAltaReg3
 
 DECLARE @idContacto4 INT
@@ -131,6 +138,7 @@ EXEC InsertarContacto
 	'145786454',
 	'lunaTorres@hotmail.com',
 	'lunaTorres1',
+	'27-123542455-2',
 	'insertarContacto'
 
 DECLARE @idContacto5 INT
@@ -150,6 +158,7 @@ EXEC InsertarContacto
 	'165734633',
 	'agustinPonce@hotmail.com',
 	'agustinPonce123',
+	'20-23453454-8',
 	'insertarContacto'
 
 DECLARE @idContacto6 INT
@@ -169,6 +178,7 @@ EXEC InsertarContacto
 	'134568784',
 	'pabloArias@outlook.com',
 	'pabloArias111',
+	'20-12344565-6',
 	'insertarContacto'
 
 DECLARE @idContacto7 INT
@@ -188,6 +198,7 @@ EXEC InsertarContacto
 	'134568784',
 	'tassoneDelfina@outlook.com',
 	'delfinaTassone555',
+	'27-12342345-9',
 	'insertarContacto'
 
 -- UPDATE FECHA INGRESO PARA QUE SE PUEDAN PROBAR LOS FILTROS
@@ -218,7 +229,7 @@ DECLARE @IdContactoAEditar INT = 2 -- ASIGNAR EL ID QUE QUIERA PARA PROBAR EDITA
 DECLARE @PaisNuevo VARCHAR (50) = 'Brasil'
 DECLARE @ContactoModifReg VARCHAR (50)= 'FuncionDeEditarContactoEnC#'
 
-EXEC EditarContacto @IdContactoAEditar, NULL, NULL, @PaisNuevo ,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, @ContactoModifReg
+EXEC EditarContacto @IdContactoAEditar, NULL, NULL, @PaisNuevo ,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,@ContactoModifReg
 
 --MOSTRAR LAS DOS TABLAS COMPLETAS DESPUES DEL UPDATE
 

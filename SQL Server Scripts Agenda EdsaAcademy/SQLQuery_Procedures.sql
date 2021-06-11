@@ -25,6 +25,7 @@ CREATE PROCEDURE InsertarContacto
 	@TelefonoCelular VARCHAR (20) = NULL,
 	@Email VARCHAR (30),
 	@CuentaSkype VARCHAR (20) = NULL,
+	@Cuil VARCHAR (20),
 
 	@ContactoAltaReg VARCHAR(50)
 	
@@ -46,6 +47,8 @@ AS
 			TelefonoCelular,
 			Email,
 			CuentaSkype,
+			Cuil,
+			
 
 			ContactoAltaReg,
 			FechaAltaReg
@@ -65,6 +68,7 @@ AS
 			@TelefonoCelular,
 			@Email,
 			@CuentaSkype,
+			@Cuil,
 
 			@ContactoAltaReg,
 			GETDATE()
@@ -91,6 +95,7 @@ CREATE PROCEDURE EditarContacto -- RECIBE POR PARAMETRO EL ID A MODIFICAR, Y UNI
 	@TelefonoCelular VARCHAR (20) = NULL,
 	@Email VARCHAR (30)= NULL,
 	@CuentaSkype VARCHAR (20) = NULL,
+	@Cuil VARCHAR (20),
 
 	@ContactoModifReg VARCHAR(50)
 AS
@@ -112,6 +117,7 @@ AS
 				Email = @Email,
 				CuentaSkype = @CuentaSkype,
 				ContactoModifReg = @ContactoModifReg,
+				Cuil = @Cuil,
 				FechaModifReg = GETDATE()
 			WHERE (AgendaContactos.Id = @Id)
 	END
@@ -146,6 +152,7 @@ AS
 			TelefonoCelular,
 			Email,
 			CuentaSkype,
+			Cuil,
 			FechaAltaReg
 		FROM [dbo].[AgendaContactos]
 		WHERE (@ApellidoYNombre IS NULL OR ApellidoYNombre LIKE '%' + @ApellidoYNombre + '%') AND

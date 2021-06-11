@@ -19,6 +19,7 @@ AS
 			TelefonoCelular,
 			Email,
 			CuentaSkype,
+			Cuil,
 
 			ContactoAltaReg,
 			FechaAltaReg,
@@ -40,6 +41,7 @@ AS
 			TelefonoCelular,
 			Email,
 			CuentaSkype,
+			Cuil,
 
 			ContactoAltaReg,
 			FechaAltaReg,
