@@ -75,9 +75,34 @@ INSERT INTO [dbo].[Pais] (NombrePais) VALUES
 	('China'),
 	('Japon')
 
+CREATE TABLE SiNo
+(
+	IdSiNo INT IDENTITY(1,1),
+	Valor VARCHAR (20) NOT NULL
+)
+
+INSERT INTO [dbo].[SiNo] (Valor) VALUES 
+
+	('Si'),
+	('No')
+
+CREATE TABLE Genero
+(
+	IdGenero INT IDENTITY(1,1),
+	Valor VARCHAR (20) NOT NULL
+)
+
+INSERT INTO [dbo].[Genero] (Valor) VALUES 
+
+	('Masculino'),
+	('Femenino')
+
+
 SELECT * FROM Pais
 SELECT * FROM AgendaContactos
 SELECT * FROM AgendaContactos_Historica
+SELECT * FROM Genero
+SELECT * FROM SiNo
 
 --Borrar Tablas
 
@@ -88,3 +113,7 @@ DROP TABLE AgendaContactos_Historica
 DROP TABLE Pais
 
 DROP TABLE Area
+
+DROP TABLE SiNo
+
+DROP TABLE Genero
